@@ -1,0 +1,12 @@
+{
+    "features_to_count": [
+        {
+            "name": "paragraphs",
+            "xpath": "//p"
+        },
+        {
+            "name": "anchors",
+            "xpath": "//a"
+        }
+    ]
+}

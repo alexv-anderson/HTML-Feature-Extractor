@@ -1,0 +1,6 @@
+.vscode/
+
+app/*
+!app/src/
+!app/data/
+!app/config/
