@@ -2,7 +2,12 @@ import csv
 import json
 import os
 
+from io import StringIO
+
 from lxml import etree
+
+def extract_features_from_string(json_data, text):
+    return extract_features_from_file(json_data, StringIO(text))
 
 def extract_features_from_file(json_data, source_file):
     html = etree.parse(source_file)
