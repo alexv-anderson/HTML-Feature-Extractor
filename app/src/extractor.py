@@ -6,6 +6,33 @@ from io import BytesIO, StringIO
 
 from lxml import etree
 
+class CountingFeatureExtractor:
+    def __init__(self, config_file_path=None):
+        self._feature_criteria = {}
+        self.feature_counts = []
+
+        if config_file_path is not None:
+            self.load_features(config_file_path)
+    
+    def load_features(self, config_file_path):
+        load_feature_criteria(config_file_path, self._feature_criteria)
+    
+    def add_feature(self, name, xpath):
+        if name in self._feature_criteria:
+            raise ValueError("There is already a feature named '%s'." % name)
+        if xpath is None:
+            raise ValueError("An XPath expression is required for criteria.")
+        put_feature_criterion(self._feature_criteria, name, xpath)
+
+    def accumulate_features_from_string(self, text):
+        self.feature_counts.append(extract_features_from_string(self._feature_criteria, text))
+
+    def accumulate_features_from_bytes(self, byte_string):
+        self.feature_counts.append(extract_features_from_bytes(self._feature_criteria, byte_string))
+    
+    def accumulate_features_from_file(self, source_file):
+        self.feature_counts.append(extract_features_from_file(self._feature_criteria, source_file))
+
 def extract_features_from_string(feature_criteria, text):
     """
     Extract features from an ASCII string.
@@ -74,15 +101,15 @@ def put_feature_criterion(feature_criteria, name, xpath):
     feature_criteria[name] = xpath
 
 if __name__ == "__main__":
-    # Load criteria
-    feature_criteria = load_feature_criteria("./config/features.json")
+    extractor = CountingFeatureExtractor("./config/features.json")
 
     with open("./out.csv", "w+") as o:
-        # Add "path" and "file" fields
-        field_names = ["path", "file"]
-        for feature_name in feature_criteria:
+        field_names = []
+        for feature_name in extractor._feature_criteria:
             field_names.append(feature_name)
         csv_out = csv.DictWriter(o, field_names)
         csv_out.writeheader()
 
-        csv_out.writerows(extract_features_from_directory(feature_criteria, "./data"))
+        extractor.accumulate_features_from_file("./data/index.html")
+
+        csv_out.writerows(extractor.feature_counts)
