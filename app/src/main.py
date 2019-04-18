@@ -30,14 +30,14 @@ def extract_features_from_directory(feature_criteria, directory_path):
                 data_rows.append(data)
     return data_rows
 
-def load_features(config_file_path):
+def load_feature_criteria(config_file_path):
     with open(config_file_path, "r") as f:
         return json.load(f)
 
 if __name__ == "__main__":
-    feature_criteria = load_features("./config/features.json")
+    feature_criteria = load_feature_criteria("./config/features.json")
 
-    with open("./config/features.json", "r") as f, open("./out.csv", "w+") as o:
+    with open("./out.csv", "w+") as o:
         field_names = ["path", "file"]
         for feature in feature_criteria["features_to_count"]:
             field_names.append(feature["name"])
