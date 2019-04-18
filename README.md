@@ -38,15 +38,23 @@ The `CountingFeatureExtractor` class provides a wrapper around the functions def
    1. Process entire file using `extract_features_from_file()`
 
 ## Adding a Feature to Count
-The features which will be counted are taken from the list given by the `features_to_count` property in `app/config/features.json`. The list contains objects with two properties
+The features which will be counted are taken from the list given by the `features_to_count` property in `app/config/features.json`. The list contains objects with two required properties
 - **`name`** is the name of the feature and is used to identify the feature in the output `CSV` file.
 - **`xpath`** is an [XPath](https://www.w3schools.com/xml/xml_xpath.asp) query which describes what should be counted.
+
+Additionally there are two optional properties which can be used to further refine the criteria.
+- **`text_re_mode`** may be either `match` or `search`. The mode indicates which of the two methods from the [re](https://docs.python.org/3/library/re.html) module should be used.
+- **`text_re_pattern`** is the pattern which will be given to either [re.match](https://docs.python.org/3/library/re.html#re.Pattern.match) or [re.search](https://docs.python.org/3/library/re.html#re.Pattern.search).
+
+_Note: Both `text_re_mode` and `text_re_pattern` must be specified for either property to be used._
 ```json
 {
     "features_to_count": [
         {
             "name": "paragraphs",
-            "xpath": "//p"
+            "xpath": "//p",
+            "text_re_mode": "search",
+            "text_re_pattern": "phrase"
         },
         {
             "name": "anchors",

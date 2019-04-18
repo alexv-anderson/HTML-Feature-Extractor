@@ -2,7 +2,9 @@
     "features_to_count": [
         {
             "name": "paragraphs",
-            "xpath": "//p"
+            "xpath": "//p",
+            "text_re_mode": "search",
+            "text_re_pattern": "simple"
         },
         {
             "name": "anchors",

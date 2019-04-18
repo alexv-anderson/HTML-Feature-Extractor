@@ -1,5 +1,7 @@
 import csv
 import json
+import logging
+import re
 import os
 
 from io import BytesIO, StringIO
@@ -89,7 +91,22 @@ def extract_features_from_file(feature_criteria, source_file):
     # Store the number of matches in the file for each criteria's XPath query
     data = {}
     for feature_name in feature_criteria:
-        data[feature_name] = len(html.xpath(feature_criteria[feature_name]))
+        feature = feature_criteria[feature_name]
+        elements = html.xpath(feature["xpath"])
+        if "text_re_mode" in feature and "text_re_pattern" in feature:
+            if feature["text_re_mode"] == "match":
+                pattern_matcher = re.match
+            elif feature["text_re_mode"] == "search":
+                pattern_matcher = re.search
+            else:
+                raise ValueError("Incorrect 'text_re_mode' %s for feature %s. Expected either 'match' or 'search'" % feature["text_re_mode"], feature_name)
+            
+            data[feature_name] = 0
+            for element in elements:
+                if pattern_matcher(feature["text_re_pattern"], element.text):
+                    data[feature_name] += 1
+        else:
+            data[feature_name] = len(elements)  
 
     return data
 
@@ -120,12 +137,24 @@ def load_feature_criteria(config_file_path, feature_criteria={}):
     """
     with open(config_file_path, "r") as f:
         for feature in json.load(f)["features_to_count"]:
-            put_feature_criterion(feature_criteria, feature["name"], feature["xpath"])
+            put_feature_criterion(
+                feature_criteria,
+                feature["name"],
+                feature["xpath"],
+                feature["text_re_mode"] if "text_re_mode" in feature else None,
+                feature["text_re_pattern"] if "text_re_pattern" in feature else None
+            )
 
     return feature_criteria
 
-def put_feature_criterion(feature_criteria, name, xpath):
-    feature_criteria[name] = xpath
+def put_feature_criterion(feature_criteria, name, xpath, re_mode, re_pattern):
+    feature_criteria[name] = {
+        "xpath": xpath
+    }
+    if re_mode is not None:
+        feature_criteria[name]["text_re_mode"] = re_mode
+    if re_pattern is not None:
+        feature_criteria[name]["text_re_pattern"] = re_pattern
 
 if __name__ == "__main__":
     extractor = CountingFeatureExtractor(
