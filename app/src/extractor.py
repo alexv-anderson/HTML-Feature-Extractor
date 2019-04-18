@@ -34,8 +34,8 @@ def extract_features_from_file(feature_criteria, source_file):
 
     # Store the number of matches in the file for each criteria's XPath query
     data = {}
-    for feature in feature_criteria["features_to_count"]:
-        data[feature["name"]] = len(html.xpath(feature["xpath"]))
+    for feature_name in feature_criteria:
+        data[feature_name] = len(html.xpath(feature_criteria[feature_name]))
 
     return data
 
@@ -59,13 +59,19 @@ def extract_features_from_directory(feature_criteria, directory_path):
 
     return data_rows
 
-def load_feature_criteria(config_file_path):
+def load_feature_criteria(config_file_path, feature_criteria={}):
     """
-    Loads the criteria which define the features to search for.
-    Returns a dictionary which resulted from loading the JSON file at the given path.
+    Loads criteria from the JSON file described in the path and returns the dictionary.
+    The criteria define the features to search for.
     """
     with open(config_file_path, "r") as f:
-        return json.load(f)
+        for feature in json.load(f)["features_to_count"]:
+            put_feature_criterion(feature_criteria, feature["name"], feature["xpath"])
+
+    return feature_criteria
+
+def put_feature_criterion(feature_criteria, name, xpath):
+    feature_criteria[name] = xpath
 
 if __name__ == "__main__":
     # Load criteria
@@ -74,8 +80,8 @@ if __name__ == "__main__":
     with open("./out.csv", "w+") as o:
         # Add "path" and "file" fields
         field_names = ["path", "file"]
-        for feature in feature_criteria["features_to_count"]:
-            field_names.append(feature["name"])
+        for feature_name in feature_criteria:
+            field_names.append(feature_name)
         csv_out = csv.DictWriter(o, field_names)
         csv_out.writeheader()
 
