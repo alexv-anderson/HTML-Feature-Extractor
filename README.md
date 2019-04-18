@@ -14,7 +14,22 @@ Execute `setup.bash` to create the virtual environment and install `lxml`.
 
 ## API
 
-1. Create feature criteria JSON file _(described below)_.
+### Class
+
+The `CountingFeatureExtractor` class provides a wrapper around the functions defined in `extractor.py` which structures the functions' use in a standard way. If you prefer to use the functions in a non-standard way, then review the instructions in the [Custom](#custom) section of this README.
+
+0. _(Optional)_ create feature criteria in a `JSON` file.
+0. Import the module using `import extractor`
+0. Create an instance of the class
+0. Define the features of interest:
+    - The criteria to be extracted using can be defined using the constructor's parameters or the `load_extracted_features`, `add_meta_feature`, and `add_extracted_feature` methods.
+    - **Extracted Features** are those which are extracted from `HTML` files using `XPath` queries.
+    - **Meta Features** are those which provide context for the values after they have been extracted such as file name, file path, or URL.
+0. Process files and strings using either the `accumulate_features_from_string`, `accumulate_features_from_bytes`, or `accumulate_features_from_file` methods while supplying meta features as necessary via the `meta_features` parameter.
+
+### Custom
+
+1. Create feature criteria `JSON` file _(described below)_.
 1. Import the module using `import extractor`
 1. Load the criteria defining the features using `load_feature_criteria()`
 1. Process `HTML` data using one of the three methods below
@@ -22,7 +37,7 @@ Execute `setup.bash` to create the virtual environment and install `lxml`.
    1. Process entire string of byte characters using `extract_features_from_bytes()`
    1. Process entire file using `extract_features_from_file()`
 
-### Adding a Feature to Count
+## Adding a Feature to Count
 The features which will be counted are taken from the list given by the `features_to_count` property in `app/config/features.json`. The list contains objects with two properties
 - **`name`** is the name of the feature and is used to identify the feature in the output `CSV` file.
 - **`xpath`** is an [XPath](https://www.w3schools.com/xml/xml_xpath.asp) query which describes what should be counted.
