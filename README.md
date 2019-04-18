@@ -9,7 +9,7 @@ Execute `setup.bash` to create the virtual environment and install `lxml`.
 
 1. Place the page which needs to be parsed into the `app/data` directory.
 1. Add features to be counted to the `features_to_count` property in `app/config/features.json`
-1. Execute the script from the `app` directory by executing `python3 src/main.py`
+1. Execute the script from the `app` directory by executing `python3 src/extractor.py`
 1. View the output in `app/out.csv`
 
 ## API
