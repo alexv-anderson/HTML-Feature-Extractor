@@ -1,0 +1,61 @@
+{
+  "http": {
+    "response_url": "https://www.foxnews.com/",
+    "status": 200,
+    "headers": {
+      "X-Amz-Id-2": [
+        "jMeI5ZNv9aT614hZFhZUgXy7QvsV3YvUJ5k+3oT39Jf6C9d5C1bvBVLEm9Afk0p0yckoVn//xfU="
+      ],
+      "X-Amz-Request-Id": [
+        "D92D3B88AA063970"
+      ],
+      "Last-Modified": [
+        "Mon, 22 Apr 2019 23:41:51 GMT"
+      ],
+      "Etag": [
+        "\"4de93291ebd1cc19c3d50615c088d330\""
+      ],
+      "Accept-Ranges": [
+        "bytes"
+      ],
+      "Content-Type": [
+        "text/html; charset=UTF-8"
+      ],
+      "Server": [
+        "AmazonS3"
+      ],
+      "Vary": [
+        "Accept-Encoding"
+      ],
+      "Cache-Control": [
+        "must-revalidate,max-age=66"
+      ],
+      "Expires": [
+        "Mon, 22 Apr 2019 23:45:57 GMT"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:51 GMT"
+      ],
+      "Link": [
+        "<https://beacon.krxd.net>;rel=\"preconnect\",<https://cdn.taboola.com>;rel=\"preconnect\",<https://a5763640713.cdn.optimizely.com>;rel=\"preconnect\",<https://my.foxnews.com>;rel=\"preconnect\""
+      ],
+      "Strict-Transport-Security": [
+        "max-age=7884000 ; preload"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.foxnews.com",
+      "download_latency": 0.10267329216003418,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "http": {
+    "response_url": "https://www.huhot.com/",
+    "status": 200,
+    "headers": {
+      "Server": [
+        "nginx"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:52 GMT"
+      ],
+      "Content-Type": [
+        "text/html; charset=UTF-8"
+      ],
+      "P3P": [
+        "CP=\"ALL DSP NID CURa ADMa DEVa HISa OTPa OUR NOR NAV DEM\""
+      ],
+      "X-Pingback": [
+        "https://www.huhot.com/xmlrpc.php"
+      ],
+      "Link": [
+        "<https://www.huhot.com/wp-json/>; rel=\"https://api.w.org/\"",
+        "<https://www.huhot.com/>; rel=shortlink"
+      ],
+      "Wpe-Backend": [
+        "apache"
+      ],
+      "X-Cacheable": [
+        "bot"
+      ],
+      "Cache-Control": [
+        "max-age=10800, must-revalidate"
+      ],
+      "X-Cache": [
+        "HIT: 1"
+      ],
+      "X-Pass-Why": [
+        ""
+      ],
+      "X-Cache-Group": [
+        "bot"
+      ],
+      "X-Type": [
+        "default"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.huhot.com",
+      "download_latency": 0.10279464721679688,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

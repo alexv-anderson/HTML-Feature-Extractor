@@ -1,0 +1,49 @@
+{
+  "http": {
+    "response_url": "https://www.qdoba.com/",
+    "status": 200,
+    "headers": {
+      "Content-Type": [
+        "text/html"
+      ],
+      "Date": [
+        "Wed, 10 Apr 2019 05:40:49 GMT"
+      ],
+      "Last-Modified": [
+        "Wed, 10 Apr 2019 05:26:55 GMT"
+      ],
+      "Server": [
+        "AmazonS3"
+      ],
+      "Vary": [
+        "Accept-Encoding"
+      ],
+      "Age": [
+        "1101844"
+      ],
+      "X-Cache": [
+        "Hit from cloudfront"
+      ],
+      "Via": [
+        "1.1 419c9901ed027566ceb381cbfb7dd6c1.cloudfront.net (CloudFront)"
+      ],
+      "X-Amz-Cf-Id": [
+        "KLFXqb9NOFaLifNBAFR6jMp5-4Cn7C9NeOwHi8qbNrWdmarCW5inoQ=="
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.qdoba.com",
+      "download_latency": 0.08591246604919434,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

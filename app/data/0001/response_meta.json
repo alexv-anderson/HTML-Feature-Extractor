@@ -1,0 +1,43 @@
+{
+  "http": {
+    "response_url": "https://www.msnbc.com/",
+    "status": 200,
+    "headers": {
+      "Content-Type": [
+        "text/html; charset=utf-8"
+      ],
+      "Etag": [
+        "W/\"54a73-wcnt7NA1MWQJiAM5wEF8g4I71F0\""
+      ],
+      "Server": [
+        "nginx"
+      ],
+      "X-Backend-Server": [
+        "newsb1vertsweb09.east.nbcnd.aws"
+      ],
+      "X-Powered-By": [
+        "Express"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:51 GMT"
+      ],
+      "Vary": [
+        "Accept-Encoding"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.msnbc.com",
+      "download_latency": 0.08112692832946777,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

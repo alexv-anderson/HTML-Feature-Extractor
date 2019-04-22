@@ -1,0 +1,82 @@
+{
+  "http": {
+    "response_url": "https://www.bbc.com/",
+    "status": 200,
+    "headers": {
+      "Server": [
+        "Apache"
+      ],
+      "X-Cache-Action": [
+        "HIT"
+      ],
+      "Cache-Control": [
+        "max-age=60"
+      ],
+      "X-Cache-Age": [
+        "23"
+      ],
+      "Content-Type": [
+        "text/html"
+      ],
+      "Expires": [
+        "Mon, 22 Apr 2019 23:43:18 GMT"
+      ],
+      "Content-Language": [
+        "en"
+      ],
+      "Etag": [
+        "\"325981a1d363a7b81464ee8184b12e85\""
+      ],
+      "X-Pal-Host": [
+        "pal144.back.live.telhc.local:80"
+      ],
+      "Accept-Ranges": [
+        "bytes"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:51 GMT"
+      ],
+      "Via": [
+        "1.1 varnish"
+      ],
+      "Age": [
+        "8"
+      ],
+      "X-Lb-Nocache": [
+        "true"
+      ],
+      "X-Fastly-Cache-Status": [
+        "HIT"
+      ],
+      "X-Served-By": [
+        "cache-mdw17355-MDW"
+      ],
+      "X-Cache": [
+        "HIT"
+      ],
+      "X-Cache-Hits": [
+        "2, 2"
+      ],
+      "X-Timer": [
+        "S1555976691.400029,VS0,VE0"
+      ],
+      "Vary": [
+        "Accept-Encoding"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.bbc.com",
+      "download_latency": 0.0732889175415039,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "http": {
+    "url": "https://www.foxnews.com/",
+    "method": "GET",
+    "headers": {
+      "Accept": [
+        "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+      ],
+      "Accept-Language": [
+        "en"
+      ],
+      "User-Agent": [
+        "Scrapy/1.6.0 (+https://scrapy.org)"
+      ],
+      "Accept-Encoding": [
+        "gzip,deflate"
+      ],
+      "Cookie": [
+        "_csrf=1s-N8oVlD7qkLF0-NSju7V28; AKA_A2=A"
+      ]
+    }
+  },
+  "scrapy": {
+    "meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.foxnews.com",
+      "download_latency": 0.10267329216003418,
+      "depth": 0
+    }
+  }
+}

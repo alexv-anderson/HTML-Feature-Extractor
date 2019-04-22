@@ -1,0 +1,85 @@
+{
+  "http": {
+    "response_url": "https://www.target.com/",
+    "status": 200,
+    "headers": {
+      "Server": [
+        "nginx"
+      ],
+      "Content-Type": [
+        "text/html; charset=utf-8"
+      ],
+      "X-Dns-Prefetch-Control": [
+        "on"
+      ],
+      "X-Frame-Options": [
+        "SAMEORIGIN"
+      ],
+      "X-Download-Options": [
+        "noopen"
+      ],
+      "X-Content-Type-Options": [
+        "nosniff"
+      ],
+      "X-Xss-Protection": [
+        "1; mode=block"
+      ],
+      "X-Treatment-Ids": [
+        "431818d0-c45b-471a-81d4-2e106b6e4279"
+      ],
+      "X-Treatment-Hash": [
+        "3294028149aa26982e7b5bfeba3e57b8"
+      ],
+      "Channel": [
+        "web"
+      ],
+      "Etag": [
+        "W/\"3c315-BL3qe+TX/H72fgqVjGEE2Kfp294\""
+      ],
+      "Cache-Control": [
+        "max-age=0, no-cache, no-store"
+      ],
+      "Accept-Ranges": [
+        "bytes"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:52 GMT"
+      ],
+      "Age": [
+        "0"
+      ],
+      "Clientgeo": [
+        "US"
+      ],
+      "Clientip": [
+        "108.85.190.143"
+      ],
+      "Set-Cookie": [
+        "visitorId=016A477021A202019751E84018860625; Max-Age=63072000; Expires=Wed, 21 Apr 2021 23:44:52 GMT; Path=/; Domain=.target.com",
+        "sapphire=1; Max-Age=2629746; Expires=Thu, 23 May 2019 10:13:58 GMT; Path=/; Domain=.target.com",
+        "TealeafAkaSid=5Qvc1ogU8kqmB9lsWxzV-mzE7G4ODv16; Expires=Mon, 29 Apr 2019 23:44:52 GMT; Path=/; Domain=target.com;",
+        "GuestLocation=53705|43.075|-89.460|WI|US;Path=/; Secure; Max-Age=86400"
+      ],
+      "Vary": [
+        "Accept-Encoding"
+      ],
+      "Strict-Transport-Security": [
+        "max-age=31536000; includeSubDomains"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.target.com",
+      "download_latency": 0.2724802494049072,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

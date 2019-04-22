@@ -1,0 +1,64 @@
+{
+  "http": {
+    "response_url": "https://www.noodles.com/",
+    "status": 200,
+    "headers": {
+      "Server": [
+        "nginx"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:52 GMT"
+      ],
+      "Content-Type": [
+        "text/html; charset=UTF-8"
+      ],
+      "Expires": [
+        "Wed, 17 Aug 2005 00:00:00 GMT"
+      ],
+      "Pragma": [
+        "no-cache"
+      ],
+      "Cache-Provider": [
+        "CLOUDWAYS-CACHE-DE"
+      ],
+      "Cache-Control": [
+        "must-revalidate"
+      ],
+      "Vary": [
+        "Accept-Encoding"
+      ],
+      "X-Frame-Options": [
+        "SAMEORIGIN"
+      ],
+      "Strict-Transport-Security": [
+        "max-age=16070400;"
+      ],
+      "Access-Control-Allow-Origin": [
+        "https://iframe.punchh.com"
+      ],
+      "X-Xss-Protection": [
+        "1; mode=block"
+      ],
+      "X-Content-Type-Options": [
+        "nosniff"
+      ],
+      "Content-Security-Policy": [
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com *.google-analytics.com *.facebook.net *.outbrain.com *.adform.net *.doubleclick.net https://ajax.googleapis.com https://www.google.com/recaptcha/api.js *.gstatic.com *.googleadservices.com *.googleads.g.doubleclick.net; object-src 'self'"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.noodles.com",
+      "download_latency": 0.08430862426757812,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

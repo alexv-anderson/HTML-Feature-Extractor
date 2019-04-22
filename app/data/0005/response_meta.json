@@ -1,0 +1,46 @@
+{
+  "http": {
+    "response_url": "https://slashdot.org/",
+    "status": 200,
+    "headers": {
+      "Server": [
+        "nginx/1.14.0 (Ubuntu)"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:51 GMT"
+      ],
+      "Content-Type": [
+        "text/html; charset=utf-8"
+      ],
+      "Slash_Log_Data": [
+        "shtml"
+      ],
+      "Cache-Control": [
+        "no-cache"
+      ],
+      "Pragma": [
+        "no-cache"
+      ],
+      "X-Xrds-Location": [
+        "https://slashdot.org/slashdot.xrds"
+      ],
+      "Strict-Transport-Security": [
+        "max-age=31536000"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "slashdot.org",
+      "download_latency": 0.22899079322814941,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

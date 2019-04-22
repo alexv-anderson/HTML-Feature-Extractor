@@ -1,0 +1,64 @@
+{
+  "http": {
+    "response_url": "https://stackexchange.com/",
+    "status": 200,
+    "headers": {
+      "Cache-Control": [
+        "private"
+      ],
+      "Content-Type": [
+        "text/html; charset=utf-8"
+      ],
+      "X-Xrds-Location": [
+        "https://openid.stackexchange.com/xrds"
+      ],
+      "X-Frame-Options": [
+        "SAMEORIGIN"
+      ],
+      "X-Request-Guid": [
+        "187c1084-038c-48bc-81dc-911930a2137a"
+      ],
+      "Accept-Ranges": [
+        "bytes"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:51 GMT"
+      ],
+      "Via": [
+        "1.1 varnish"
+      ],
+      "X-Served-By": [
+        "cache-chi21139-CHI"
+      ],
+      "X-Cache": [
+        "MISS"
+      ],
+      "X-Cache-Hits": [
+        "0"
+      ],
+      "X-Timer": [
+        "S1555976691.302204,VS0,VE33"
+      ],
+      "Vary": [
+        "Accept-Encoding,Fastly-SSL"
+      ],
+      "X-Dns-Prefetch-Control": [
+        "off"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "stackexchange.com",
+      "download_latency": 0.12360048294067383,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

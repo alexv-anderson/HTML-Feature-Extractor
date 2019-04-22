@@ -1,0 +1,96 @@
+{
+  "http": {
+    "response_url": "https://www.nytimes.com/",
+    "status": 200,
+    "headers": {
+      "Server": [
+        "nginx"
+      ],
+      "Content-Type": [
+        "text/html; charset=utf-8"
+      ],
+      "Cache-Control": [
+        "no-cache"
+      ],
+      "X-Nyt-Data-Last-Modified": [
+        "Mon, 22 Apr 2019 23:43:15 GMT"
+      ],
+      "Last-Modified": [
+        "Mon, 22 Apr 2019 23:43:15 GMT"
+      ],
+      "X-Pagetype": [
+        "vi-homepage"
+      ],
+      "X-Vi-Compatibility": [
+        "Compatible"
+      ],
+      "X-Xss-Protection": [
+        "1; mode=block"
+      ],
+      "X-Content-Type-Options": [
+        "nosniff"
+      ],
+      "X-Nyt-Route": [
+        "homepage"
+      ],
+      "X-Origin-Time": [
+        "2019-04-22 23:44:36 UTC"
+      ],
+      "Accept-Ranges": [
+        "bytes"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:51 GMT"
+      ],
+      "Age": [
+        "16"
+      ],
+      "X-Served-By": [
+        "cache-jfk8133-JFK, cache-mdw17322-MDW"
+      ],
+      "X-Cache": [
+        "HIT, HIT"
+      ],
+      "X-Cache-Hits": [
+        "1, 1"
+      ],
+      "X-Timer": [
+        "S1555976692.602759,VS0,VE2"
+      ],
+      "Vary": [
+        "Accept-Encoding, Fastly-SSL"
+      ],
+      "Set-Cookie": [
+        "nyt-a=YZ4kJD3FTfKHOhYANWWZhJ; Expires=Tue, 21 Apr 2020 23:44:51 GMT; Path=/; Domain=.nytimes.com",
+        "nyt-gdpr=0; Expires=Tue, 23 Apr 2019 05:44:51 GMT; Path=/; Domain=.nytimes.com",
+        "nyt-geo=US; Expires=Tue, 23 Apr 2019 05:44:51 GMT; Path=/; Domain=.nytimes.com"
+      ],
+      "X-Gdpr": [
+        "0"
+      ],
+      "X-Frame-Options": [
+        "DENY"
+      ],
+      "X-Api-Version": [
+        "F-F-VI"
+      ],
+      "Content-Security-Policy": [
+        "default-src data: 'unsafe-inline' 'unsafe-eval' https:; script-src data: 'unsafe-inline' 'unsafe-eval' https: blob:; style-src data: 'unsafe-inline' https:; img-src data: https: blob:; font-src data: https:; connect-src https: wss: blob:; media-src https: blob:; object-src https:; child-src https: data: blob:; form-action https:; block-all-mixed-content;"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.nytimes.com",
+      "download_latency": 0.2791748046875,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "http": {
+    "url": "https://www.mcdonalds.com/us/en-us.html",
+    "method": "GET",
+    "headers": {
+      "Accept": [
+        "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+      ],
+      "Accept-Language": [
+        "en"
+      ],
+      "User-Agent": [
+        "Scrapy/1.6.0 (+https://scrapy.org)"
+      ],
+      "Accept-Encoding": [
+        "gzip,deflate"
+      ],
+      "Cookie": [
+        "MCDCountry_code=US"
+      ]
+    }
+  },
+  "scrapy": {
+    "meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.mcdonalds.com",
+      "download_latency": 0.04799509048461914,
+      "redirect_times": 1,
+      "redirect_ttl": 19,
+      "redirect_urls": [
+        "https://www.mcdonalds.com/"
+      ],
+      "depth": 0
+    }
+  }
+}

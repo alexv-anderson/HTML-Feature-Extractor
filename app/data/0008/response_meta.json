@@ -1,0 +1,72 @@
+{
+  "http": {
+    "response_url": "https://www.reddit.com/",
+    "status": 200,
+    "headers": {
+      "Cache-Control": [
+        "private, s-maxage=0, max-age=0, must-revalidate"
+      ],
+      "Content-Type": [
+        "text/html; charset=utf-8"
+      ],
+      "Set-Cookie": [
+        "loid=00000000003n9zsebp.2.1555976691406.Z0FBQUFBQmN2bEh6QTF3X05OME1XWTZwVDZIemt5bXpQOGdOOENzaFR6cF9qNjExTGFmU1d4UjA1eXZKX0hIRUVzdWpRazR2Z0xGTEgtQUVnaUZ6NG14Rk80WEdrZ0dVWDVJamVhNlZDUDR0UHNDQ1pfaHgyNktyckZFS012eF85eFNKajlZc1hKeG8; path=/; expires=Thu, 22 Apr 2021 23:44:51 GMT; domain=.reddit.com; secure",
+        "session_tracker=7GWvgRGcbRxZO17HM0.0.1555976691406.Z0FBQUFBQmN2bEh6YXl1c1diNlc4cFZ6UHFyVUxqd2dRZ1NvMThHSXFZTWUwOTY0MWZ3UTh4Y0ZGNVEtazBMWS1OY1lMM3JTNGc2NWNHQjVzZEs0QVdPbGd0TGx1VnJWTmRSN095MUtfZGtvcnFwWG10UFdubmMxRW1RaDJnY3hTYjEyUmZmYnNabjc; path=/; domain=.reddit.com; secure",
+        "session_tracker=7GWvgRGcbRxZO17HM0.0.1555976691489.Z0FBQUFBQmN2bEh6bVk3U280MHUtUVVQa2gxUzVfanZvVF8ycmoteXlGeFVubDdwX0NNOXZTTGwybFZ4SUx3VlZEN0tKMlpXWDJxZ2ZTRnFHRFpCSi1EXzI0SjN2MFR1eTFLa25kaUk5TWdMVTBkZW56OVh4bkRoWmhZcFRkTWdEVnkxa3A1elUxODE; path=/; domain=.reddit.com; secure",
+        "session_tracker=7GWvgRGcbRxZO17HM0.0.1555976691488.Z0FBQUFBQmN2bEh6NDV2dWRJT0xPV25uaTlBZ1ZKUklFVGs5bGNUX3Ztb2EwbGRlM3ZFaWlydmplZUoxM2VjeFFkbVFEMXZmM0JnZjd5eFZEc0c4ZXN5YjBiaWhvNWZxM1FBM0puSUVmSjBSOWtzbGRCSDNLNW5XTWRsdDlrWUhTaWlVeEtQMHI3S1Y; path=/; domain=.reddit.com; secure",
+        "rseor3=true; path=/; expires=Wed, 22 May 2019 23:44:52 GMT; domain=.reddit.com;",
+        "rabt=; path=/; expires=Wed, 22 May 2019 23:44:52 GMT; domain=.reddit.com;"
+      ],
+      "X-Frame-Options": [
+        "SAMEORIGIN"
+      ],
+      "Fastly-Restarts": [
+        "1"
+      ],
+      "Accept-Ranges": [
+        "bytes"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:52 GMT"
+      ],
+      "Via": [
+        "1.1 varnish"
+      ],
+      "X-Served-By": [
+        "cache-mdw17336-MDW"
+      ],
+      "X-Cache": [
+        "MISS"
+      ],
+      "X-Cache-Hits": [
+        "0"
+      ],
+      "X-Timer": [
+        "S1555976691.331261,VS0,VE687"
+      ],
+      "Vary": [
+        "Accept-Encoding"
+      ],
+      "Strict-Transport-Security": [
+        "max-age=15552000; includeSubDomains; preload"
+      ],
+      "Server": [
+        "snooserv"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.reddit.com",
+      "download_latency": 0.7691836357116699,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

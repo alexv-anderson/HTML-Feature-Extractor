@@ -1,0 +1,75 @@
+{
+  "http": {
+    "response_url": "https://www.cnn.com/",
+    "status": 200,
+    "headers": {
+      "Content-Type": [
+        "text/html; charset=utf-8"
+      ],
+      "X-Servedbyhost": [
+        "::ffff:127.0.0.1"
+      ],
+      "Access-Control-Allow-Origin": [
+        "*"
+      ],
+      "Cache-Control": [
+        "max-age=60"
+      ],
+      "Content-Security-Policy": [
+        "default-src 'self' blob: https://*.cnn.com:* http://*.cnn.com:* *.cnn.io:* *.cnn.net:* *.turner.com:* *.turner.io:* *.ugdturner.com:* courageousstudio.com *.vgtf.net:*; script-src 'unsafe-eval' 'unsafe-inline' 'self' *; style-src 'unsafe-inline' 'self' blob: *; child-src 'self' blob: *; frame-src 'self' *; object-src 'self' *; img-src 'self' data: blob: *; media-src 'self' data: blob: *; font-src 'self' data: *; connect-src 'self' *; frame-ancestors 'self' https://*.cnn.com:* http://*.cnn.com https://*.cnn.io:* http://*.cnn.io:* *.turner.com:* courageousstudio.com;"
+      ],
+      "X-Content-Type-Options": [
+        "nosniff"
+      ],
+      "X-Xss-Protection": [
+        "1; mode=block"
+      ],
+      "Via": [
+        "1.1 varnish",
+        "1.1 varnish"
+      ],
+      "Accept-Ranges": [
+        "bytes"
+      ],
+      "Date": [
+        "Mon, 22 Apr 2019 23:44:51 GMT"
+      ],
+      "Age": [
+        "46"
+      ],
+      "Set-Cookie": [
+        "countryCode=US; Domain=.cnn.com; Path=/",
+        "geoData=madison|WI|53711|US|NA|-500|xdsl; Domain=.cnn.com; Path=/"
+      ],
+      "X-Served-By": [
+        "cache-iad2141-IAD, cache-chi21159-CHI"
+      ],
+      "X-Cache": [
+        "HIT, HIT"
+      ],
+      "X-Cache-Hits": [
+        "1, 4"
+      ],
+      "X-Timer": [
+        "S1555976691.384842,VS0,VE0"
+      ],
+      "Vary": [
+        "Accept-Encoding"
+      ]
+    }
+  },
+  "scrapy": {
+    "flags": [],
+    "encoding": "utf-8",
+    "request_meta": {
+      "download_timeout": 180.0,
+      "download_slot": "www.cnn.com",
+      "download_latency": 0.0809316635131836,
+      "depth": 0
+    }
+  },
+  "crawler": {
+    "response_extension": "html",
+    "response_has_text": true
+  }
+}

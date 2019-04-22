@@ -1,0 +1,31 @@
+{
+  "http": {
+    "url": "https://stackexchange.com/",
+    "method": "GET",
+    "headers": {
+      "Accept": [
+        "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+      ],
+      "Accept-Language": [
+        "en"
+      ],
+      "User-Agent": [
+        "Scrapy/1.6.0 (+https://scrapy.org)"
+      ],
+      "Accept-Encoding": [
+        "gzip,deflate"
+      ],
+      "Cookie": [
+        "prov=6491da38-c4b7-6b4a-0f55-eac29f552848"
+      ]
+    }
+  },
+  "scrapy": {
+    "meta": {
+      "download_timeout": 180.0,
+      "download_slot": "stackexchange.com",
+      "download_latency": 0.12360048294067383,
+      "depth": 0
+    }
+  }
+}
