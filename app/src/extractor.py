@@ -196,8 +196,8 @@ if __name__ == "__main__":
     extractor = CountingFeatureExtractor(
         "./config/features.json",
         [
-            "path",
-            "file"
+            "requested_url",
+            "response_url"
         ]
     )
 
@@ -205,16 +205,46 @@ if __name__ == "__main__":
         csv_out = csv.DictWriter(o, extractor.all_feature_names())
         csv_out.writeheader()
 
+        def get_requested_url(html_directory):
+            with open(os.path.join(html_directory, "request_meta.json")) as f:
+                return json.load(f)["http"]["url"]
+
+        def get_response_url(html_direcotry):
+            with open(os.path.join(html_direcotry, "response_meta.json")) as f:
+                return json.load(f)["http"]["response_url"]
+
+        def directory_walker(current_directory):
+            data = []
+            for file_name in os.listdir(current_directory):
+                file_path = os.path.join(current_directory, file_name)
+                if file_name.endswith(".html"):
+                    data.append({
+                        "requested_url": get_requested_url(current_directory),
+                        "response_url": get_response_url(current_directory),
+                        "file_path": file_path
+                    })
+                elif os.path.isdir(file_path):
+                    data += directory_walker(file_path)
+
+            return data
+                     
         directory_path = "./data"
-        for file_name in os.listdir(directory_path):
+        data = directory_walker(directory_path)
+        skipped = 0
+        for page_data in data:
             # Only extract data from HTML files
-            if file_name.endswith(".html"):
+            try:
                 extractor.accumulate_features_from_file(
-                    os.path.join(directory_path, file_name),
+                    page_data["file_path"],
                     {
-                        "path": directory_path,
-                        "file": file_name
+                        "requested_url": page_data["requested_url"],
+                        "response_url": page_data["response_url"]
                     }
                 )
+            except etree.XMLSyntaxError:
+                skipped += 1
+                print("Cannot parse %s due to syntax error" % page_data["requested_url"])
+
+        print("Skipped %d of %d" % (skipped, len(data)))
 
         csv_out.writerows(extractor.feature_counts)
