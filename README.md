@@ -47,6 +47,10 @@ Additionally there are two optional properties which can be used to further refi
 - **`text_re_pattern`** is the pattern which will be given to either [re.match](https://docs.python.org/3/library/re.html#re.Pattern.match) or [re.search](https://docs.python.org/3/library/re.html#re.Pattern.search).
 
 _Note: Both `text_re_mode` and `text_re_pattern` must be specified for either property to be used._
+
+The content of tags can also be extracted by adding elements to the list `text_to_extract`. Each object must have two required properties:
+- **`name`** is the name of the feature and is used to identify the feature in the output `CSV` file.
+- **`xpath`** is an [XPath](https://www.w3schools.com/xml/xml_xpath.asp) query which describes the tags whose text should be extracted.
 ```json
 {
     "features_to_count": [
@@ -59,6 +63,12 @@ _Note: Both `text_re_mode` and `text_re_pattern` must be specified for either pr
         {
             "name": "anchors",
             "xpath": "//a"
+        }
+    ],
+    "text_to_extract": [
+        {
+            "name": "paragraph_text",
+            "xpath": "//p"
         }
     ]
 }
