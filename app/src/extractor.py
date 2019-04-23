@@ -108,7 +108,8 @@ def extract_features_from_file(feature_criteria, content_criteria, source_file):
     """
 
     # Parse the HTML
-    html = etree.parse(source_file)
+    parser = etree.HTMLParser(recover=True)
+    html = etree.parse(source_file, parser=parser)
 
     # Store the number of matches in the file for each criteria's XPath query
     data = {}
@@ -125,7 +126,7 @@ def extract_features_from_file(feature_criteria, content_criteria, source_file):
             
             data[feature_name] = 0
             for element in elements:
-                if pattern_matcher(feature["text_re_pattern"], element.text):
+                if pattern_matcher(feature["text_re_pattern"], str(element.text)):
                     data[feature_name] += 1
         else:
             data[feature_name] = len(elements)  
