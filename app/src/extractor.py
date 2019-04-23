@@ -11,6 +11,7 @@ from lxml import etree
 class CountingFeatureExtractor:
     def __init__(self, config_file_path=None, meta_features=[]):
         self._extracted_feature_criteria = {}
+        self._extracted_content_criteria = {}
         self._meta_features = meta_features
         self.feature_counts = []
 
@@ -18,24 +19,41 @@ class CountingFeatureExtractor:
             self.load_extracted_features(config_file_path)
     
     def load_extracted_features(self, config_file_path):
-        load_feature_criteria(config_file_path, self._extracted_feature_criteria)
+        load_feature_criteria(
+            config_file_path,
+            self._extracted_feature_criteria,
+            self._extracted_content_criteria
+        )
     
     def add_meta_feature(self, name):
         if name not in self._meta_features:
             self._meta_features.append(name)
 
-    def add_extracted_feature(self, name, xpath):
-        if name in self._extracted_feature_criteria:
+    def add_extracted_content(self, name, xpath):
+        self._validate_new_feature(name, xpath)
+        put_feature_criterion(self._extracted_feature_criteria, name, xpath)
+
+    def add_extracted_feature(self, name, xpath, text_re_mode, text_re_pattern):
+        self._validate_new_feature(name, xpath,text_re_mode, text_re_pattern)
+        put_feature_criterion(self._extracted_feature_criteria, name, xpath, text_re_mode, text_re_pattern)
+
+    def _validate_new_feature(self, name, xpath, text_re_mode=None, text_re_pattern=None):
+        if name in self._extracted_feature_criteria or self._extracted_content_criteria:
             raise ValueError("There is already a feature named '%s'." % name)
         if xpath is None:
             raise ValueError("An XPath expression is required for criteria.")
-        put_feature_criterion(self._extracted_feature_criteria, name, xpath)
+        if (text_re_mode is None and text_re_pattern is not None) or (text_re_mode is not None and text_re_pattern is None):
+            raise ValueError("text_re_mode and text_re_pattern must both be defined or None")
+        if text_re_mode is not None and text_re_mode not in [ "match", "search" ]:
+            raise ValueError("text_re_mode should be None, 'match', or 'search'")            
 
     def all_feature_names(self):
         feature_names = []
         feature_names += self._meta_features
         for extracted_feature_name in self._extracted_feature_criteria:
             feature_names.append(extracted_feature_name)
+        for extracted_content_name in self._extracted_content_criteria:
+            feature_names.append(extracted_content_name)
         return feature_names
 
     def accumulate_features_from_string(self, text, meta_features={}):
@@ -52,7 +70,11 @@ class CountingFeatureExtractor:
     
     def accumulate_features_from_file(self, source_file, meta_features={}):
         self._append_features(
-            extract_features_from_file(self._extracted_feature_criteria, source_file),
+            extract_features_from_file(
+                self._extracted_feature_criteria,
+                self._extracted_content_criteria,
+                source_file
+            ),
             meta_features
         )
     
@@ -62,7 +84,7 @@ class CountingFeatureExtractor:
         self.feature_counts.append(extracted_features)
 
 
-def extract_features_from_string(feature_criteria, text):
+def extract_features_from_string(feature_criteria, content_criteria, text):
     """
     Extract features from an ASCII string.
     Returns a dictionary of the number of matches for each criteria. The keys of the
@@ -70,7 +92,7 @@ def extract_features_from_string(feature_criteria, text):
     """
     return extract_features_from_file(feature_criteria, StringIO(text))
 
-def extract_features_from_bytes(feature_criteria, bytes_string):
+def extract_features_from_bytes(feature_criteria, content_criteria, bytes_string):
     """
     Extract features from a byte string.
     Returns a dictionary of the number of matches for each criteria. The keys of the
@@ -78,7 +100,7 @@ def extract_features_from_bytes(feature_criteria, bytes_string):
     """
     return extract_features_from_file(feature_criteria, BytesIO(bytes_string))
 
-def extract_features_from_file(feature_criteria, source_file):
+def extract_features_from_file(feature_criteria, content_criteria, source_file):
     """
     Extract features from a file like object.
     Returns a dictionary of the number of matches for each criteria. The keys of the
@@ -108,6 +130,12 @@ def extract_features_from_file(feature_criteria, source_file):
         else:
             data[feature_name] = len(elements)  
 
+    for feature_name in content_criteria:
+        feature = content_criteria[feature_name]
+        data[feature_name] = ""
+        for element in html.xpath(feature["xpath"]):
+            data[feature_name] += str(element.text)
+
     return data
 
 def extract_features_from_directory(feature_criteria, directory_path):
@@ -130,13 +158,14 @@ def extract_features_from_directory(feature_criteria, directory_path):
 
     return data_rows
 
-def load_feature_criteria(config_file_path, feature_criteria={}):
+def load_feature_criteria(config_file_path, feature_criteria={}, extracted_content={}):
     """
     Loads criteria from the JSON file described in the path and returns the dictionary.
     The criteria define the features to search for.
     """
     with open(config_file_path, "r") as f:
-        for feature in json.load(f)["features_to_count"]:
+        rubric = json.load(f)
+        for feature in rubric["features_to_count"]:
             put_feature_criterion(
                 feature_criteria,
                 feature["name"],
@@ -144,10 +173,17 @@ def load_feature_criteria(config_file_path, feature_criteria={}):
                 feature["text_re_mode"] if "text_re_mode" in feature else None,
                 feature["text_re_pattern"] if "text_re_pattern" in feature else None
             )
+        
+        for feature in rubric["text_to_extract"]:
+            put_feature_criterion(
+                extracted_content,
+                feature["name"],
+                feature["xpath"]
+            )
 
     return feature_criteria
 
-def put_feature_criterion(feature_criteria, name, xpath, re_mode, re_pattern):
+def put_feature_criterion(feature_criteria, name, xpath, re_mode=None, re_pattern=None):
     feature_criteria[name] = {
         "xpath": xpath
     }
