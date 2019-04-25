@@ -49,7 +49,8 @@ class CountingFeatureExtractor:
 
     def all_feature_names(self):
         feature_names = []
-        feature_names += self._meta_features
+        for meta_feature_name in self._meta_features:
+            feature_names.append(meta_feature_name)
         for extracted_feature_name in self._extracted_feature_criteria:
             feature_names.append(extracted_feature_name)
         for extracted_content_name in self._extracted_content_criteria:
@@ -58,13 +59,21 @@ class CountingFeatureExtractor:
 
     def accumulate_features_from_string(self, text, meta_features={}):
         self._append_features(
-            extract_features_from_string(self._extracted_feature_criteria, text),
+            extract_features_from_string(
+                self._extracted_feature_criteria,
+                self._extracted_content_criteria,
+                text
+            ),
             meta_features
         )
 
     def accumulate_features_from_bytes(self, byte_string, meta_features={}):
         self._append_features(
-            extract_features_from_bytes(self._extracted_feature_criteria, byte_string),
+            extract_features_from_bytes(
+                self._extracted_feature_criteria,
+                self._extracted_content_criteria,
+                byte_string
+            ),
             meta_features
         )
     
@@ -90,7 +99,11 @@ def extract_features_from_string(feature_criteria, content_criteria, text):
     Returns a dictionary of the number of matches for each criteria. The keys of the
     dictionary are the names of the criteria.
     """
-    return extract_features_from_file(feature_criteria, StringIO(text))
+    return extract_features_from_file(
+        feature_criteria,
+        content_criteria,
+        StringIO(text)
+    )
 
 def extract_features_from_bytes(feature_criteria, content_criteria, bytes_string):
     """
@@ -98,7 +111,11 @@ def extract_features_from_bytes(feature_criteria, content_criteria, bytes_string
     Returns a dictionary of the number of matches for each criteria. The keys of the
     dictionary are the names of the criteria.
     """
-    return extract_features_from_file(feature_criteria, BytesIO(bytes_string))
+    return extract_features_from_file(
+        feature_criteria,
+        content_criteria,
+        BytesIO(bytes_string)
+    )
 
 def extract_features_from_file(feature_criteria, content_criteria, source_file):
     """
@@ -109,13 +126,18 @@ def extract_features_from_file(feature_criteria, content_criteria, source_file):
 
     # Parse the HTML
     parser = etree.HTMLParser(recover=True)
-    html = etree.parse(source_file, parser=parser)
+    return extract_features_from_tree(
+        feature_criteria,
+        content_criteria,
+        etree.parse(source_file, parser=parser)
+    )
 
+def extract_features_from_tree(feature_criteria, content_criteria, html_tree):
     # Store the number of matches in the file for each criteria's XPath query
     data = {}
     for feature_name in feature_criteria:
         feature = feature_criteria[feature_name]
-        elements = html.xpath(feature["xpath"])
+        elements = html_tree.xpath(feature["xpath"])
         if "text_re_mode" in feature and "text_re_pattern" in feature:
             if feature["text_re_mode"] == "match":
                 pattern_matcher = re.match
@@ -134,7 +156,7 @@ def extract_features_from_file(feature_criteria, content_criteria, source_file):
     for feature_name in content_criteria:
         feature = content_criteria[feature_name]
         data[feature_name] = ""
-        for element in html.xpath(feature["xpath"]):
+        for element in html_tree.xpath(feature["xpath"]):
             data[feature_name] += _custom_str(element.text)
 
     return data
@@ -200,10 +222,10 @@ def _custom_str(value):
     """
     if value is None:
         return ""
-    if isinstance(value, str) or isinstance(value, unicode):
+    if isinstance(value, str) or isinstance(value, bytes):
         return value
     return str(value)
-
+    
 if __name__ == "__main__":
     extractor = CountingFeatureExtractor(
         "./config/features.json",
