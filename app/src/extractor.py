@@ -200,6 +200,8 @@ def _custom_str(value):
     """
     if value is None:
         return ""
+    if isinstance(value, str) or isinstance(value, unicode):
+        return value
     return str(value)
 
 if __name__ == "__main__":
