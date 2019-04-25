@@ -126,7 +126,7 @@ def extract_features_from_file(feature_criteria, content_criteria, source_file):
             
             data[feature_name] = 0
             for element in elements:
-                if pattern_matcher(feature["text_re_pattern"], str(element.text)):
+                if pattern_matcher(feature["text_re_pattern"], _custom_str(element.text)):
                     data[feature_name] += 1
         else:
             data[feature_name] = len(elements)  
@@ -135,7 +135,7 @@ def extract_features_from_file(feature_criteria, content_criteria, source_file):
         feature = content_criteria[feature_name]
         data[feature_name] = ""
         for element in html.xpath(feature["xpath"]):
-            data[feature_name] += str(element.text)
+            data[feature_name] += _custom_str(element.text)
 
     return data
 
@@ -192,6 +192,15 @@ def put_feature_criterion(feature_criteria, name, xpath, re_mode=None, re_patter
         feature_criteria[name]["text_re_mode"] = re_mode
     if re_pattern is not None:
         feature_criteria[name]["text_re_pattern"] = re_pattern
+
+def _custom_str(value):
+    """
+    Serializes the given value using the str method if the value is not None.
+    If the value is None then the empty string is returned
+    """
+    if value is None:
+        return ""
+    return str(value)
 
 if __name__ == "__main__":
     extractor = CountingFeatureExtractor(
