@@ -225,8 +225,29 @@ def _custom_str(value):
     if isinstance(value, str) or isinstance(value, bytes):
         return value
     return str(value)
-    
+
+def process_mixed(text):
+    data = {}
+    f = StringIO(text)
+    for line in f:
+        if not ":" in line:
+            break
+        key, values_line = line.split(":", 1)
+        data[key] = [ value.strip() for value in values_line.split(',') ]
+    print(data)
+    print(f.read())
+
 if __name__ == "__main__":
+    process_mixed("key: value1, value2\n\
+key2: value3\n\
+\n\
+<!DOCTYPE html>\n\
+<html>\n\
+    <head></head>\n\
+    <body><p>Hello</p></body>\n\
+</html>")
+
+def walk_html():
     extractor = CountingFeatureExtractor(
         "./config/features.json",
         [
