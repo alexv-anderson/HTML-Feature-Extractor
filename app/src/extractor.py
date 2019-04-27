@@ -33,7 +33,7 @@ class CountingFeatureExtractor:
         self._validate_new_feature(name, xpath)
         put_feature_criterion(self._extracted_content_criteria, name, xpath)
 
-    def add_extracted_feature(self, name, xpath, text_re_mode, text_re_pattern):
+    def add_extracted_feature(self, name, xpath, text_re_mode=None, text_re_pattern=None):
         self._validate_new_feature(name, xpath,text_re_mode, text_re_pattern)
         put_feature_criterion(self._extracted_feature_criteria, name, xpath, text_re_mode, text_re_pattern)
 
